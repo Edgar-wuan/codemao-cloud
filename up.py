@@ -18,7 +18,6 @@ ysxml = '''
 <file>
     <generator>Codemao Cloud 2.0</generator>
     <name>文件名</name>
-    <password>密码的sha1摘要</password>
     <content>文件内容->UTF-8->base64</content>
 </file>'''
 class MyUI:
