@@ -10,10 +10,7 @@ window.geometry('200x350')#窗口的大小
 
 #按钮的函数
 def hit_me1():
-    up.multiprocessing.freeze_support()
-    up.app = up.QApplication(up.sys.argv)
-    up.ex = up.MyUI()
-    up.sys.exit(up.app.exec_())
+    up.main()
 def hit_me2():
     down.app = down.Application()
     down.app.run()
