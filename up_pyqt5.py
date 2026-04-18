@@ -16,9 +16,8 @@ from Crypto.Random import get_random_bytes
 ysxml = '''
 <?xml version="1.0" encoding="UTF-8"?>
 <file>
-    <generator>Codemao Cloud</generator>
+    <generator>Codemao Cloud 2.0</generator>
     <name>文件名</name>
-    <password>密码的sha1摘要</password>
     <content>文件内容->UTF-8->base64</content>
 </file>'''
 class MyUI(QWidget):
