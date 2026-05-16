@@ -8,6 +8,8 @@ import base64
 import hashlib
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
+import zstandard as zstd
+
 dir_path = ''
 pattern = re.compile(
     r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
@@ -125,7 +127,8 @@ def get_aes_key(password):
 def aes_decrypt(encrypted_b64, password):
     """AES-256解密：Base64密文 → 明文（自动兼容文本/二进制）"""
     key = get_aes_key(password)
-    encrypted_bytes = base64.b64decode(encrypted_b64)
+    encrypted_byte = base64.b64decode(encrypted_b64)
+    encrypted_bytes = zstd.decompress(encrypted_byte)
     # 拆分IV（前16字节）和密文
     iv = encrypted_bytes[:16]
     ciphertext = encrypted_bytes[16:]
