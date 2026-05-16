@@ -12,11 +12,13 @@ import xmltodict
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 from Crypto.Random import get_random_bytes
+import zstandard as zstd
+
 # 保留原XML模板常量
 ysxml = '''
 <?xml version="1.0" encoding="UTF-8"?>
 <file>
-    <generator>Codemao Cloud 2.0</generator>
+    <generator>Codemao Cloud 2.1</generator>
     <name>文件名</name>
     <content>文件内容->UTF-8->base64</content>
 </file>'''
@@ -138,7 +140,7 @@ class MyUI:
                     # 生成XML内容，直接处理编码，不生成临时文件
                     info_dict = {
                         'file': {
-                            'generator': 'Codemao Cloud 2.0',
+                            'generator': 'Codemao Cloud 2.1',
                             'name': namen,
                             'content': basedata
                         }
@@ -212,7 +214,8 @@ def aes_encrypt(plain_text, password):
         plain_bytes = plain_text
     padded_data = pad(plain_bytes, AES.block_size)
     encrypted = cipher.encrypt(padded_data)
-    return base64.b64encode(iv + encrypted).decode("utf-8")
+    compressed_data = zstd.compress(iv+encrypted, level=15)
+    return base64.b64encode(compressed_data).decode("utf-8")
 # --------------------- 主函数 ---------------------
 def main():
     # 打包时不加这一条pyinstaller会默认不支持多进程
