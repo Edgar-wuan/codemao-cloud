@@ -85,7 +85,7 @@ class Application(object):
                 if b'<?xml version="1.0" encoding="utf-8"?>' in xml_data:
                     # 使用原始字节解析XML，让xmltodict自动根据XML声明处理编码
                     xml = xmltodict.parse(xml_data)
-                    if(xml['file']['generator'] != 'Codemao Cloud 2.0'):
+                    if(xml['file']['generator'] != 'Codemao Cloud 2.1'):
                         msgbox.showerror('错误提示', '您输入的并不是使用点猫云XML上传的云盘链接，或上传版本过低')
                         self.result_text1.delete(0.0, END)
                     else:
