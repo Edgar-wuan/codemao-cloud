@@ -1,6 +1,7 @@
 # Codemao Cloud（点猫云）
 > 基于Python语言的图形化加密云盘软件 适用于较小文件的远程(加密)分享
 > 文件托管服务基于Codemao（点猫科技）服务器
+---
 [![star](https://gitee.com/zwzhaowei/codemao-cloud/badge/star.svg?theme=white)](https://gitee.com/zwzhaowei/codemao-cloud/stargazers)
 [![fork](https://gitee.com/zwzhaowei/codemao-cloud/badge/fork.svg?theme=white)](https://gitee.com/zwzhaowei/codemao-cloud/members)
 ---
